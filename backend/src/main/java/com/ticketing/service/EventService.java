@@ -38,11 +38,14 @@ public class EventService {
         // Clear existing seats
         seatRepository.deleteAll();
 
-        // Create 100 seats
+        // Create 100 seats using batch insert for optimization
+        List<Seat> seats = new java.util.ArrayList<>(TOTAL_SEATS);
         for (int i = 1; i <= TOTAL_SEATS; i++) {
-            Seat seat = new Seat(i);
-            seatRepository.save(seat);
+            seats.add(new Seat(i));
         }
+
+        // Batch insert all seats in a single operation
+        seatRepository.saveAll(seats);
 
         log.info("Event initialized successfully with {} seats", TOTAL_SEATS);
         return "Event initialized with " + TOTAL_SEATS + " seats";
