@@ -31,6 +31,8 @@ A full-stack event ticketing system with dynamic pricing based on booking order.
 - **HTTP Client**: Axios
 
 ### Database Schema
+> **Note**: This system is designed as a **Single Event Architecture**, so there is no explicit `Event` table. All seats and bookings are scoped to a single global event context.
+
 - **Seat**: Individual seats (1-100)
 - **Booking**: Booking transactions
 - **BookingSeat**: Join table with pricing information
