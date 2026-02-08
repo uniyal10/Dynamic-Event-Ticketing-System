@@ -68,6 +68,20 @@ The backend will start on **http://localhost:8080**
 curl -X POST http://localhost:8080/api/initialize
 ```
 
+### 4. Run Frontend
+
+```bash
+cd frontend
+
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+```
+
+The frontend will start on **http://localhost:5173**
+
 ## 📡 API Endpoints
 
 ### 1. Initialize Event

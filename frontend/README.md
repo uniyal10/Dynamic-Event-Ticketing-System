@@ -1,73 +1,68 @@
-# React + TypeScript + Vite
+# Event Ticketing Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + TypeScript application for the Event Ticketing System.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Interactive Seat Map**: View 100 seats in a grid layout
+- **Real-time Updates**: Seat status reflects current database state
+- **Dynamic Pricing**:
+  - $50 for first 50 bookings
+  - $75 for next 30 bookings
+  - $100 for last 20 bookings
+- **Booking Management**: Select multiple seats and book instantly
+- **Dashboard**: View occupancy rates and available seats
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Framework**: React 18
+- **Language**: TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS v4
+- **HTTP Client**: Axios
+- **Routing**: React Router DOM v6
+- **Icons**: Lucide React
 
-## Expanding the ESLint configuration
+## 🏃‍♂️ Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js 18+
+- Backend running on port 8080
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+# Install dependencies
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Development
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+# Start dev server
+npm run dev
+```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+App will run at [http://localhost:5173](http://localhost:5173)
+
+### Build
+
+```bash
+# Build for production
+npm run build
+```
+
+## 📁 Project Structure
+
+```
+src/
+├── components/
+│   ├── booking/       # SeatMap, BookingForm, BookingSummary
+│   ├── layout/        # Layout, Header, Footer
+│   └── ui/            # Reusable UI components
+├── pages/             # Page components (Dashboard)
+├── services/          # API services
+├── types/             # TypeScript interfaces
+└── App.tsx            # Main application component
 ```
