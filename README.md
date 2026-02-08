@@ -23,6 +23,13 @@ A full-stack event ticketing system with dynamic pricing based on booking order.
 - **Build Tool**: Maven
 - **Java Version**: 17
 
+### Frontend (React)
+- **Framework**: React 18
+- **Language**: TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS v4
+- **HTTP Client**: Axios
+
 ### Database Schema
 - **Seat**: Individual seats (1-100)
 - **Booking**: Booking transactions
@@ -266,9 +273,10 @@ backend/
 - **Spring Boot Starter Web**: REST API
 - **Spring Data JPA**: Database ORM
 - **PostgreSQL**: Relational database
-- **Lombok**: Reduce boilerplate code
-- **Jakarta Validation**: Request validation
+- **React 18**: Frontend UI library
+- **Tailwind CSS**: Utility-first CSS framework
 - **Pessimistic Locking**: Prevent concurrent booking conflicts
+- **Lombok**: Reduce boilerplate code
 
 ## 🔒 Concurrency Handling
 
