@@ -35,6 +35,38 @@ A full-stack event ticketing system with dynamic pricing based on booking order.
 - **Booking**: Booking transactions
 - **BookingSeat**: Join table with pricing information
 
+```mermaid
+erDiagram
+    booking ||--|{ booking_seat : contains
+    seat ||--|{ booking_seat : "is booked in"
+    
+    booking {
+        bigint id PK
+        integer booking_order
+        timestamp booking_date
+        varchar booking_status
+        varchar user_name
+        integer total_seats
+        numeric total_price
+    }
+
+    seat {
+        bigint id PK
+        integer seat_number
+        varchar status
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    booking_seat {
+        bigint id PK
+        bigint booking_id FK
+        bigint seat_id FK
+        integer seat_order
+        numeric seat_price
+    }
+```
+
 ## 📋 Prerequisites
 
 - Java 17 or higher
