@@ -1,0 +1,47 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-EventTicketingApplication",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.ticketing.EventTicketingApplication",
+            "projectName": "event-ticketing",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "env": {
+                "JAVA_HOME": "/usr/local/opt/openjdk@17"
+            }
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-EventTicketingApplication (Debug)",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.ticketing.EventTicketingApplication",
+            "projectName": "event-ticketing",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "env": {
+                "JAVA_HOME": "/usr/local/opt/openjdk@17"
+            },
+            "vmArgs": "-Dspring.profiles.active=dev"
+        },
+        {
+            "type": "java",
+            "name": "Maven: Spring Boot Run",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/backend",
+            "mainClass": "com.ticketing.EventTicketingApplication",
+            "projectName": "event-ticketing",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "env": {
+                "JAVA_HOME": "/usr/local/opt/openjdk@17",
+                "PATH": "/usr/local/opt/openjdk@17/bin:${env:PATH}"
+            },
+            "preLaunchTask": "maven: spring-boot:run"
+        }
+    ]
+}
