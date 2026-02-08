@@ -134,16 +134,20 @@ public class EventService {
         log.info("Booking completed successfully. Booking ID: {}, Total Price: {}",
                 savedBooking.getId(), totalPrice);
 
-        // 10. Return response
-        List<Long> bookedSeatIds = seats.stream()
-                .map(Seat::getId)
+        // 10. Return response with detailed seat information
+        List<com.ticketing.dto.BookedSeatDetail> seatDetails = savedBooking.getBookingSeats().stream()
+                .map(bookingSeat -> new com.ticketing.dto.BookedSeatDetail(
+                        bookingSeat.getSeat().getId(),
+                        bookingSeat.getSeat().getSeatNumber(),
+                        bookingSeat.getSeatPrice(),
+                        bookingSeat.getSeatOrder()))
                 .collect(Collectors.toList());
 
         return new BookingResponse(
                 true,
                 "Booking confirmed for " + request.getUserName(),
                 totalPrice,
-                bookedSeatIds,
+                seatDetails,
                 savedBooking.getId());
     }
 

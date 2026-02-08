@@ -15,13 +15,13 @@ public class BookingResponse {
     private boolean success;
     private String message;
     private BigDecimal totalPrice;
-    private List<Long> bookedSeats;
+    private List<BookedSeatDetail> seats;
     private Long bookingId;
 
-    public BookingResponse(boolean success, String message, BigDecimal totalPrice, List<Long> bookedSeats) {
+    public BookingResponse(boolean success, String message, BigDecimal totalPrice, List<BookedSeatDetail> seats) {
         this.success = success;
         this.message = message;
         this.totalPrice = totalPrice;
-        this.bookedSeats = bookedSeats;
+        this.seats = seats;
     }
 }
