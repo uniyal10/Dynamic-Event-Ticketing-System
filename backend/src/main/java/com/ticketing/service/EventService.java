@@ -32,23 +32,23 @@ public class EventService {
      * Initialize event with 100 seats
      */
     @Transactional
-    public String initializeEvent() {
-        log.info("Initializing event with {} seats", TOTAL_SEATS);
+    public String initializeEvent(int numberOfSeats) {
+        log.info("Initializing event with {} seats", numberOfSeats);
 
         // Clear existing seats
         seatRepository.deleteAll();
 
         // Create 100 seats using batch insert for optimization
-        List<Seat> seats = new java.util.ArrayList<>(TOTAL_SEATS);
-        for (int i = 1; i <= TOTAL_SEATS; i++) {
+        List<Seat> seats = new java.util.ArrayList<>(numberOfSeats);
+        for (int i = 1; i <= numberOfSeats; i++) {
             seats.add(new Seat(i));
         }
 
         // Batch insert all seats in a single operation
         seatRepository.saveAll(seats);
 
-        log.info("Event initialized successfully with {} seats", TOTAL_SEATS);
-        return "Event initialized with " + TOTAL_SEATS + " seats";
+        log.info("Event initialized successfully with {} seats", numberOfSeats);
+        return "Event initialized with " + numberOfSeats + " seats";
     }
 
     /**
@@ -68,8 +68,15 @@ public class EventService {
         log.info("Processing booking request for user: {} with seats: {}",
                 request.getUserName(), request.getSeatIds());
 
+
+          if(request.getSeatIds().size()>5) {
+              throw new IllegalArgumentException("Cannot book more than 5 seats in a single booking");
+          }
+
         // 1. Fetch seats with pessimistic lock to prevent concurrent booking
         List<Seat> seats = seatRepository.findByIdInWithLock(request.getSeatIds());
+
+        
 
         // 2. Validate all seats exist
         if (seats.size() != request.getSeatIds().size()) {

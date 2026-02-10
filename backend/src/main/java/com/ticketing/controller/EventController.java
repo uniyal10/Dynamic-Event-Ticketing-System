@@ -34,9 +34,10 @@ public class EventController {
             @ApiResponse(responseCode = "200", description = "Event initialized successfully", content = @Content(mediaType = "application/json"))
     })
     @PostMapping("/initialize")
-    public ResponseEntity<Map<String, String>> initializeEvent() {
+    public ResponseEntity<Map<String, String>> initializeEvent( @RequestParam(required = false) Integer numberOfSeats) {
         log.info("Received request to initialize event");
-        String message = eventService.initializeEvent();
+        int seatsToInitialize = numberOfSeats != null ? numberOfSeats : 100;
+        String message = eventService.initializeEvent(seatsToInitialize);
         return ResponseEntity.ok(Map.of(
                 "success", "true",
                 "message", message));
@@ -47,7 +48,7 @@ public class EventController {
             @ApiResponse(responseCode = "200", description = "Successfully retrieved all seats", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Seat.class)))
     })
     @GetMapping("/seats")
-    public ResponseEntity<List<Seat>> getAllSeats() {
+    public ResponseEntity<List<Seat>> getAllSeats(@RequestParam(required = false) String numberOf) {
         log.info("Received request to get all seats");
         List<Seat> seats = eventService.getAllSeats();
         return ResponseEntity.ok(seats);

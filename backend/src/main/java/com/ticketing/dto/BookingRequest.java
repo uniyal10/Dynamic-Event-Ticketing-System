@@ -14,6 +14,9 @@ import java.util.List;
 @AllArgsConstructor
 public class BookingRequest {
 
+    @NotNull(message = "Number of seats cannot be null")
+    private Long numberOfSeats;
+
     @NotEmpty(message = "Seat IDs cannot be empty")
     private List<@NotNull(message = "Seat ID cannot be null") Long> seatIds;
 
